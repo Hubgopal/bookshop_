@@ -1,0 +1,103 @@
+
+
+/* search filter code  */
+/* Popup styles */
+.popup {
+    position: fixed;
+    top: -120px;
+    left: 450px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup.hidden {
+    display: none;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+  }
+  
+  .close-popup {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  #results p {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  /* filter code end */
+  /* shoping card  */
+  #cartItems {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  /* shoping card end */
+/* product review code */
+/* Modal Body Styling */
+.modal-body {
+    background-color: #f8f9fa;
+    padding: 30px;
+  }
+  
+  .modal-title {
+    font-size: 1.75rem;
+    color: #007bff;
+  }
+  
+  .modal-header {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  img {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Add some hover effects to buttons */
+  .btn-success:hover, .btn-outline-secondary:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+  /* Modal Footer Customization */
+  .modal-footer {
+    border-top: 1px solid #ddd;
+    padding: 15px;
+  }
+  
+  .modal-footer .btn {
+    width: 100%;
+  }
+  

@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shopping Cart Button</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+        <!-- FontAwesome for search icon -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- css file  -->
+        <link rel="stylesheet" href="css/styles.css">
+
+        <link rel="stylesheet" href="css/popup.css">
+
+    </head>
+    <body>
+        <!-- mostely required modals -->
+        <!-- first: shoping card modal -->
+        <div class="modal fade" id="shoppingCartModal" tabindex="-1"
+            aria-labelledby="shoppingCartModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            id="shoppingCartModalLabel">Shopping Cart</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="cartItems">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                            class="btn btn-primary btn-checkout">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- shoping card modal end -->
+        <!-- second is product card modal -->
+
+        <section class="modal fade" id="bookModal" tabindex="-1"
+            aria-labelledby="bookModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="bookModalLabel">Book
+                            Title</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="css/Images/product-item4.jpg"
+                                    alt="Book Image" id="modalImage"
+                                    class="img-fluid rounded shadow-lg"
+                                    style="height: 300px; object-fit: cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <h3>Author: <span class="text-muted"
+                                        id="modalAuthor">Author Name</span></h3>
+                                <p><strong>Publisher:</strong> <span
+                                        id="modalPublisher">Publisher
+                                        Name</span></p>
+                                <p><strong>ISBN:</strong> <span
+                                        id="modalISBN">1234567890</span></p>
+                                <p class="text-justify">
+                                    <strong>Summary:</strong> <span
+                                        id="modalSummary">This is the summary of
+                                        the book...</span>
+                                </p>
+                                <div
+                                    class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="text-danger fs-4"><strong
+                                            id="modalPrice">$0.00</strong></span>
+                                    <span
+                                        class="text-muted text-decoration-line-through fs-5"
+                                        id="modalOriginalPrice">$0.00</span>
+                                </div>
+                                <div class="cardbtn"
+                                    style="width: 100%;display: flex;justify-content: center;align-items: center;">
+                                    <a href="#"
+                                        class="btn align-self-center add-to-cart-btn"
+                                        data-title="Product Title 2"
+                                        data-price="29.99"
+                                        data-image="css/Images/product-item4.jpg"
+                                        style="margin-right: 5px;">Add
+                                        to Cart</a>
+
+                                    <button type="button"
+                                        class="btn "
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal"
+                                        style="margin-left: 5px;">
+                                        Wishlist
+                                    </button>
+                                </div>
+                                <div class="d-flex justify-content-centermt-3">
+                                    <span class="text-warning">★★★★☆</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to
+                            Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- product card modal end -->
+        <!-- third modal: User Profile Modal -->
+        <div class="modal fade" id="userProfileModal" tabindex="-1"
+            aria-labelledby="userProfileModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-end">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="userProfileModalLabel">User
+                            Profile</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <!-- Profile Section -->
+                        <div class="text-center mb-4"
+                            style="border-bottom: 1px solid;">
+                            <img src="css/Images/icons/person.svg"
+                                alt="Profile Picture" class="rounded-circle"
+                                style="width: 100px; height: 100px; object-fit: cover;">
+                            <h5 class="mt-3">Gopal Dawar</h5>
+                            <p class="text-muted">gopaldawar45@gmail.com</p>
+                        </div>
+
+                        <!-- Navigation List -->
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">My
+                                    Account</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">Order
+                                    History</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"
+                                    class="text-decoration-none">Wishlist</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"
+                                    class="text-decoration-none">Cart</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"
+                                    class="text-decoration-none">Recommendations</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">Gift
+                                    Cards</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">Saved
+                                    Addresses</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">Contact
+                                    Us</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"
+                                    class="text-decoration-none">Logout</a>
+                            </li>
+                        </ul>
+
+                        <!-- Settings Dropdown -->
+                        <div class="dropdown mt-4">
+                            <button
+                                class="btn btn-outline-secondary dropdown-toggle w-100"
+                                type="button" id="settingsDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Settings
+                            </button>
+                            <ul class="dropdown-menu w-100"
+                                aria-labelledby="settingsDropdown">
+                                <li><a class="dropdown-item" href="#">Profile
+                                        Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Password
+                                        and Security</a></li>
+                                <li><a class="dropdown-item" href="#">Payment
+                                        Methods</a></li>
+                                <li><a class="dropdown-item"
+                                        href="#">Notification
+                                        Preferences</a></li>
+                                <li><a class="dropdown-item" href="#">Privacy
+                                        Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Language &
+                                        Currency</a></li>
+                                <li><a class="dropdown-item text-danger"
+                                        href="#">Delete Account</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal end  -->
+
+        <!-- Header section  -->
+        <div class="header">
+            <header class="py-3 mb-4" style="padding-bottom: 0px !important;">
+                <div
+                    class="container d-flex flex-wrap justify-content-between align-items-center">
+                    <!-- Logo and Site Title (Left side) -->
+                    <a href="/"
+                        class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32">
+                            <use xlink:href="#bootstrap" />
+                        </svg>
+                        <span class="fs-4">Book Shop</span>
+                    </a>
+
+                    <!-- Main Navigation (Center) -->
+                    <ul class="nav me-auto d-flex justify-content-center">
+                        <li class="nav-item me-2">
+                            <a href="#" class="nav-link link-dark px-2 active"
+                                aria-current="page">
+                                <img src="css/Images/icons/house.svg" alt
+                                    style="width: 20px; height: auto; margin-right: 5px; box-shadow: none !important;">Home
+                            </a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a href="#products" class="nav-link link-dark px-2">
+                                <img src="css/Images/icons/archive.svg" alt
+                                    style="width: 20px; height: auto; margin-right: 5px; box-shadow: none !important;">
+                                Features Products
+                            </a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle"
+                                    type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false" style="border: none;">
+                                    <img
+                                        src="css/Images/icons/card-checklist.svg"
+                                        alt
+                                        style="width: 20px; height: auto; margin-right: 5px; box-shadow: none !important;">
+                                    Category
+                                </button>
+                                <ul class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item"
+                                            href="#sellers">Best
+                                            Sellers</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="#arrivals">New
+                                            Arrivals</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="#offers">Special
+                                            Offers</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="#spotlight">Author
+                                            Spotlight</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="#reviews">Testimonials</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a href="#contact" class="nav-link link-dark px-2">
+                                <img src="css/Images/icons/envelope.svg" alt
+                                    style="width: 22px; height: auto; margin-right: 5px;box-shadow: none !important;">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Search, Cart & User Icons (Right side) -->
+                    <form
+                        class="col-12 col-lg-auto mb-3 mb-lg-0 d-flex align-items-center justify-content-end">
+                        <!-- Search Bar -->
+                        <div class="search d-flex align-items-center me-1">
+                            <input type="search" class="form-control"
+                                id="searchInput" placeholder="Search..."
+                                aria-label="Search">
+                            <img src="css/Images/icons/search.svg"
+                                style="width: 20px;box-shadow: none !important;">
+                        </div>
+
+                        <!-- Shopping Cart Icon -->
+                        <button type="button" style="padding: 0px;"
+                            class="btn position-relative ms-3" id="cartButton"
+                            data-bs-toggle="modal"
+                            data-bs-target="#shoppingCartModal">
+                            <img src="css/Images/icons/cart.svg"
+                                style="width: 22px;box-shadow: none !important;">
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                id="cartCount"
+                                style="width: 20px;height: auto; box-shadow: none !important;">
+                                0
+                                <span class="visually-hidden">items in
+                                    cart</span>
+                            </span>
+                        </button>
+
+                        <button type="button" class="btn ms-3"
+                            style="padding: 0;" data-bs-toggle="modal"
+                            data-bs-target="#userProfileModal">
+                            <img src="css/Images/icons/person.svg"
+                                style="width: 22px; box-shadow: none !important;">
+                        </button>
+                    </form>
+                </div>
+            </header>
+        </div>
+
+        <!-- Header section end -->
+
+        <!-- hero section here -->
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1>Explore the World of Books</h1>
+                <p>Your one-stop destination for amazing book collections.
+                    Discover, read, and enjoy!</p>
+                <a href="#shop-now" class="btn btn-lg" style="color: #fff;">Shop
+                    Now</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="service-section">
+            <div class="container text-center">
+                <h2 class="mb-5 ou-service">Our Services</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card service-card  border-0">
+                            <div class="card-body">
+                                <div class="service-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <h5 class="card-title">Fast Delivery</h5>
+                                <p class="card-text">Get your books delivered to
+                                    your doorstep within days. Fast and reliable
+                                    service.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card service-card border-0">
+                            <div class="card-body">
+                                <div class="service-icon">
+                                    <i class="fas fa-book-reader"></i>
+                                </div>
+                                <h5 class="card-title">Wide Selection</h5>
+                                <p class="card-text">Explore a vast collection
+                                    of books across different genres and
+                                    categories.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card service-card border-0">
+                            <div class="card-body">
+                                <div class="service-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <h5 class="card-title">Secure Payments</h5>
+                                <p class="card-text">Pay for your books securely
+                                    through multiple payment options
+                                    available.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- hero section end -->
+
+        <!-- features section start here -->
+        <section id="products" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Featured Products</h2>
+                <div
+                    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                    <!-- Product 1 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/tab-item1">
+                            <span
+                                class="badge  position-absolute top-0 start-0 m-3"
+                                style="background: #0099ff;">Features
+                                Product</span>
+                            <img src="css/Images/tab-item1.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 1</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$29.99</strong></span>
+                                    <span
+                                        class="text-danger ms-2"><del>$39.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★☆☆</span>
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn align-self-center add-to-cart-btn"
+                                        data-title="Product Title 1"
+                                        data-price="29.99"
+                                        data-image="css/Images/product-item1.jpg">Add
+                                        to Cart</a>
+
+                                    <button type="button"
+                                        class="btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item2.jpg">
+                            <span
+                                class="badge  position-absolute top-0 start-0 m-3"
+                                style="background: #0099ff;">Features
+                                Product</span>
+                            <img src="css/Images/product-item2.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 2</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$39.99</strong></span>
+                                    <span
+                                        class="text-danger ms-2"><del>$39.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★☆☆</span>
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn  align-self-center add-to-cart-btn"
+                                        data-title="Product Title 2"
+                                        data-price="39.99"
+                                        data-image="css/Images/product-item2.jpg">Add
+                                        to Cart</a>
+                                    <button type="button"
+                                        class="btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item3.jpg">
+                            <span
+                                class="badge position-absolute top-0 start-0 m-3"
+                                style="background: #0099ff;">Features
+                                Product</span>
+                            <img src="css/Images/product-item3.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 2</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$29.99</strong></span>
+                                    <span
+                                        class="text-danger ms-2"><del>$39.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★☆☆</span>
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn  align-self-center add-to-cart-btn"
+                                        data-title="Product Title 3"
+                                        data-price="49.99"
+                                        data-image="css/Images/product-item3.jpg">Add
+                                        to Cart</a>
+                                    <button type="button"
+                                        class="btn "
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="col ">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item4.jpg">
+                            <span
+                                class="badge position-absolute top-0 start-0 m-3"
+                                style="background: #0099ff;">Features
+                                Product</span>
+                            <img src="css/Images/product-item4.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 2</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$29.99</strong></span>
+                                    <span
+                                        class="text-danger ms-2"><del>$39.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★☆☆</span>
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn align-self-center add-to-cart-btn"
+                                        data-title="Product Title 4"
+                                        data-price="39.99"
+                                        data-image="css/Images/product-item4.jpg">Add
+                                        to Cart</a>
+                                    <button type="button"
+                                        class="btn "
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more products here -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- features section end -->
+
+        <!-- best seller section start -->
+        <section id="sellers" class="py-5 bg-white">
+            <div class="container">
+                <h2 class="text-center mb-4">Best Sellers</h2>
+                <div
+                    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                    <!-- Product 1 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item5.jpg">
+                            <span
+                                class="badge bg-warning position-absolute top-0 start-0 m-3">Best
+                                Seller</span>
+                            <img src="css/Images/product-item5.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 5</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$24.99</strong></span>
+                                    <span
+                                        class="text-danger ml-2"><del>$34.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★★☆</span>
+                                    <!-- Rating -->
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Product Title 5"
+                                        data-price="24.99"
+                                        data-image="css/Images/product-item5.jpg">Add
+                                        to Cart</a>
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item4.jpg">
+                            <span
+                                class="badge bg-warning position-absolute top-0 start-0 m-3">Best
+                                Seller</span>
+                            <img src="css/Images/product-item6.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 6</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;"> $22.99
+                                        </strong></span>
+                                    <span
+                                        class="text-danger ml-2"><del>$32.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★★☆</span>
+                                    <!-- Rating -->
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Product Title 6"
+                                        data-price="22.99"
+                                        data-image="css/Images/product-item6.jpg">Add
+                                        to Cart</a>
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item4.jpg">
+                            <span
+                                class="badge bg-warning position-absolute top-0 start-0 m-3">Best
+                                Seller</span>
+                            <img src="css/Images/product-item7.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 7</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$27.99
+                                        </strong></span>
+                                    <span
+                                        class="text-danger ml-2"><del>$37.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★★☆</span>
+                                    <!-- Rating -->
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Product Title 7"
+                                        data-price="27.99"
+                                        data-image="css/Images/product-item7.jpg">Add
+                                        to Cart</a>
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item4.jpg">
+                            <span
+                                class="badge bg-warning position-absolute top-0 start-0 m-3">Best
+                                Seller</span>
+                            <img src="css/Images/product-item8.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 8</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$29.99
+                                        </strong></span>
+                                    <span
+                                        class="text-danger ml-2"><del>$39.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★★☆</span>
+                                    <!-- Rating -->
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Product Title 8"
+                                        data-price="29.99"
+                                        data-image="css/Images/product-item8.jpg">Add
+                                        to Cart</a>
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- best seller section end -->
+        <!-- New Arrival section -->
+        <section id="arrivals" class="py-5 ">
+            <div class="container">
+                <h2 class="text-center mb-4">New Arrivals</h2>
+                <div
+                    class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                    <!-- New Arrival 1 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/tab-item4.jpg">
+                            <span
+                                class="badge  position-absolute top-0 start-0 m-3"
+                                style="background: #0099ff;">New
+                                Arrival</span>
+                            <img src="css/Images/tab-item4.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 1</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$29.99</strong></span>
+                                    <span
+                                        class="text-danger ms-2"><del>$39.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★☆☆</span>
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Product Title 1"
+                                        data-price="29.99"
+                                        data-image="css/Images/product-item1.jpg">Add
+                                        to Cart</a>
+
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrival 2 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/tab-item5.jpg">
+                            <span
+                                class="badge  position-absolute top-0 start-0 m-3"
+                                style="background: #0099ff;">New
+                                Arrival</span>
+                            <img src="css/Images/tab-item5.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 2</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$39.99</strong></span>
+                                    <span
+                                        class="text-danger ms-2"><del>$39.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★☆☆</span>
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Product Title 2"
+                                        data-price="39.99"
+                                        data-image="css/Images/product-item2.jpg">Add
+                                        to Cart</a>
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Arrival 3 -->
+                    <div class="col">
+                        <div class="card f-card" style="width: 18rem;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/tab-item7.jpg">
+                            <span
+                                class="badge  position-absolute top-0 start-0 m-3"
+                                style="background: #0099ff;">New
+                                Arrival</span>
+                            <img src="css/Images/tab-item7.jpg"
+                                class="card-img-top" alt="..."
+                                style="object-fit: cover;">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Product Title 1</h5>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span><strong
+                                            style="color: #121212;">$29.99</strong></span>
+                                    <span
+                                        class="text-danger ms-2"><del>$39.99</del></span>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="text-warning">★★★☆☆</span>
+                                </div>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Product Title 1"
+                                        data-price="29.99"
+                                        data-image="css/Images/product-item1.jpg">Add
+                                        to Cart</a>
+
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- New arrival section end -->
+        <!-- Special offers -->
+        <section id="offers" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Special Offers</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <!-- Offer 1 -->
+                    <div class="col">
+                        <div class="card f-card"
+                            style="max-width: 300px; margin: 0 auto;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item4.jpg">
+                            <img src="css/Images/offers1.jpg"
+                                class="card-img-top" alt="Book Offer 1"
+                                style="height: auto; object-fit: cover;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Book Title 1</h5>
+                                <p class="card-text" style="color: #121212;">Get
+                                    20% off on this
+                                    book!</p>
+                                <span class="text-danger"><del>$29.99 </del>
+                                    $23.99</span>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Book Title 1"
+                                        data-price="29.99"
+                                        data-image="css/Images/offers1.jpg">Add
+                                        to Cart</a>
+
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Offer 2 -->
+                    <div class="col">
+                        <div class="card f-card"
+                            style="max-width: 300px; margin: 0 auto;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item4.jpg">
+                            <img src="css/Images/offers2.jpg"
+                                class="card-img-top" alt="Book Offer 2"
+                                style="height: auto; object-fit: cover;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Book Title 2</h5>
+                                <p class="card-text"
+                                    style="color: #121212;">Limited time offer!
+                                    30%
+                                    off.</p>
+                                <span class="text-danger"><del>$19.99 </del>
+                                    $13.99</span>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Book Title 2"
+                                        data-price="19.99"
+                                        data-image="css/Images/offers2.jpg">Add
+                                        to Cart</a>
+
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Offer 3 -->
+                    <div class="col">
+                        <div class="card f-card"
+                            style="max-width: 300px; margin: 0 auto;"
+                            data-title="Product Title 2"
+                            data-price="$29.99"
+                            data-original-price="$39.99"
+                            data-summary="This is another book summary."
+                            data-author="Another Author"
+                            data-publisher="Another Publisher"
+                            data-isbn="987654321"
+                            data-img="css/Images/product-item4.jpg">
+                            <img src="css/Images/offers3.jpg"
+                                class="card-img-top" alt="Book Offer 3"
+                                style="height: auto; object-fit: cover;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"
+                                    style="color: #121212;">Book Title 3</h5>
+                                <p class="card-text" style="color: #121212;">Buy
+                                    1 get 1 free! Don't
+                                    miss out!</p>
+                                <div class="cardbtn">
+                                    <a href="#"
+                                        class="btn btn-primary align-self-center add-to-cart-btn"
+                                        data-title="Book Title 3"
+                                        data-price="20.99"
+                                        data-image="css/Images/offers3.jpg">Add
+                                        to Cart</a>
+
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookModal">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- special offers section end  -->
+
+        <!-- auther section start -->
+        <section id="spotlight" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Author Spotlight</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="css/Images/author1.jpg"
+                                class="card-img-top" alt="Author 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Author Name</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit. Pellentesque
+                                    euismod.</p>
+                                <a href="#" class="btn btn-primary">See More
+                                    Books</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="css/Images/author2.jpg"
+                                class="card-img-top" alt="Author 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Author Name</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit. Pellentesque
+                                    euismod.</p>
+                                <a href="#" class="btn btn-primary">See More
+                                    Books</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- auther section end -->
+
+        <!-- customer review section  -->
+        <section id="reviews" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">What Our Customers Say</h2>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <!-- Review 1 -->
+                    <div class="col">
+                        <div class="card text-center"
+                            style="background: #f3f3f3;">
+                            <div class="card-body">
+                                <img src="css/Images/user1.jpg"
+                                    class="rounded-circle mb-3" alt="Customer 1"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                <h5 class="card-title">John Doe</h5>
+                                <p
+                                    class="card-text">"I am really happy with my purchase! The product quality exceeded my expectations, ent. Highly recommend!"</p>
+                                <div class="text-warning">
+                                    <span>★★★★☆</span> <!-- Rating -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="col">
+                        <div class="card text-center"
+                            style="background: #f3f3f3;">
+                            <div class="card-body">
+                                <img src="css/Images/user2.jpg"
+                                    class="rounded-circle mb-3" alt="Customer 2"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                <h5 class="card-title">Sarah Lee</h5>
+                                <p
+                                    class="card-text">"The delivery was fast, and the product was exactly as described. I will definitely shop here again. 5 stars all the way!"</p>
+                                <div class="text-warning">
+                                    <span>★★★★★</span> <!-- Rating -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+
+                    <div class="col">
+                        <div class="card text-center"
+                            style="background: #f3f3f3;">
+                            <div class="card-body">
+                                <img src="css/Images/user4.jpg"
+                                    class="rounded-circle mb-3" alt="Customer 4"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                <h5 class="card-title">Emily Clark</h5>
+                                <p
+                                    class="card-text">"Excellent quality! Exactly what I needed, and the price was unbeatable. I will definitely shop here again."</p>
+                                <div class="text-warning">
+                                    <span>★★★★★</span> <!-- Rating -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- sustomer review section end  -->
+
+        <!-- newslatter section  -->
+        <section class="py-5 newsection text-white">
+            <div class="container text-center">
+                <h2>Stay Updated!</h2>
+                <p>Subscribe to our newsletter for the latest products and
+                    offers</p>
+                <form action="#" method="post">
+                    <div class="input-group justify-content-center">
+                        <input type="email" class="form-control"
+                            placeholder="Enter your email" required>
+                        <button class="btn" style="background: #0099ff;"
+                            type="submit">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- end -->
+        <!-- contact us section  -->
+
+        <section id="contact" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Contact Us</h2>
+                <div class="row">
+                    <!-- Left Side: Map Section -->
+                    <div class="col-md-6 mb-4">
+                        <h4 class="text-center">Find Us on the Map</h4>
+                        <!-- Google Map Embed -->
+                        <div class="map-responsive">
+
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5121.175133202604!2d74.68337807792392!3d20.899142993463787!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdec3894a193015%3A0x488d0c97b85a153c!2sIcchapurti%20Ganesh%20Mandir!5e0!3m2!1sen!2sin!4v1735117156720!5m2!1sen!2sin"
+                                width="100%" height="450" style="border:0;"
+                                allowfullscreen loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Contact Form Section -->
+                    <div class="col-md-6">
+                        <h4 class="text-center">Send Us a Message</h4>
+                        <form action="#" method="post">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full
+                                    Name</label>
+                                <input type="text" class="form-control"
+                                    id="name" placeholder="Enter your full name"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email
+                                    Address</label>
+                                <input type="email" class="form-control"
+                                    id="email" placeholder="Enter your email"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message"
+                                    class="form-label">Message</label>
+                                <textarea class="form-control" id="message"
+                                    rows="4" placeholder="Your message..."
+                                    required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit"
+                                    class="btn btn-primary">Send
+                                    Message</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-dark text-light py-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Column 1: Quick Links -->
+                    <div class="col-md-4 mb-4">
+                        <h5 class="text-uppercase position-relative">
+                            Quick Links
+                            <span class="underline"></span>
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#home"
+                                    class="text-light d-block position-relative quick-link">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about"
+                                    class="text-light d-block position-relative quick-link">About
+                                    Us</a>
+                            </li>
+                            <li>
+                                <a href="#services"
+                                    class="text-light d-block position-relative quick-link">Services</a>
+                            </li>
+                            <li>
+                                <a href="#contact-us"
+                                    class="text-light d-block position-relative quick-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Social Media -->
+                    <div class="col-md-4 mb-4">
+                        <h5 class="text-uppercase position-relative">
+                            Follow Us
+                            <span class="underline"></span>
+                        </h5>
+                        <ul class="list-unstyled d-flex justify-content-start">
+                            <li class="me-3">
+                                <a href="https://www.facebook.com"
+                                    target="_blank"
+                                    class="text-light social-icon">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="me-3">
+                                <a href="https://www.twitter.com"
+                                    target="_blank"
+                                    class="text-light social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="me-3">
+                                <a href="https://www.instagram.com"
+                                    target="_blank"
+                                    class="text-light social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com"
+                                    target="_blank"
+                                    class="text-light social-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Contact Info -->
+                    <div class="col-md-4 mb-4">
+                        <h5 class="text-uppercase position-relative">
+                            Contact Info
+                            <span class="underline"></span>
+                        </h5>
+                        <p class="animated-contact">
+                            <i class="fas fa-map-marker-alt me-2"></i> Address:
+                            Your Address Here
+                        </p>
+                        <p class="animated-contact">
+                            <i class="fas fa-phone-alt me-2"></i> Phone: +123
+                            456 7890
+                        </p>
+                        <p class="animated-contact">
+                            <i class="fas fa-envelope me-2"></i> Email:
+                            example@domain.com
+                        </p>
+                    </div>
+                </div>
+                <!-- Copyright Section -->
+                <div class="text-center mt-4">
+                    <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/script.js"></script>
+        <script src="js/cardfun.js"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+</html>
